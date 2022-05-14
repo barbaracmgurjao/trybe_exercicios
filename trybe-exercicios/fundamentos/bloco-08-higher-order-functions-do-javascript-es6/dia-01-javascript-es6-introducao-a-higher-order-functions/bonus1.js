@@ -37,14 +37,13 @@ const warriorAttack = (warrior) => {
 const mageAttack = (mage) => {
   const min = mage.intelligence;
   const max = 2 * min;
-  const consumedManaTurn = 15
+  const consumedManaTurn = 15;
   const mageMana = mage.mana;
   const mageTurn = { manaTurn: 0, damageTurn: 'Não possui mana suficiente.'};
-  if (mage.mana > consumedManaTurn) {
-    mageTurn.manaTurn = 15;
+  if (mageMana > consumedManaTurn) {
+    mageTurn.manaTurn = consumedManaTurn;
     mageTurn.damageTurn = dmg(max, min);
   }
-  console.log(mageTurn); //primeiro console.log
   return mageTurn;
 };
 
@@ -53,32 +52,25 @@ const battleMembers = { mage, warrior, dragon };
 const gameActions = { 
 
   warriorTurn: (warriorAttack) => {
-    const warriorDmg = warriorAttack(warrior);
-    dragon.healthPoints -= warriorDmg;
-    warrior.damage = warriorDmg;
-    console.log('warrior ataca e damage fica' + warriorDmg);
+    const warriorDmgTurn = warriorAttack(warrior);  
+    dragon.healthPoints -= warriorDmgTurn;
+    warrior.damage = warriorDmgTurn;
   },
 
   mageTurn: (mageAttack) => {
     const mageCharTurn = mageAttack(mage);
     const mageManaTurn = mageCharTurn.manaTurn;
-    const mageMana = mage.mana;
-    const mageDmg = mageCharTurn.damageTurn;
-    dragon.healthPoints -= mageDmg;
-    mage.damage = mageDmg;
-    console.log(mageDmg); //segundo console log damage mage
-    console.log(mageCharTurn.manaTurn); //terceiro mage mana da vez
-    mage.mana = mageMana - mageManaTurn;
-    console.log(mage.mana); //ultimo console mage mana depois da vez
-    console.log('mage ataca e damage fica' + mageDmg);
+    const mageDmgTurn = mageCharTurn.damageTurn;
+    dragon.healthPoints -= mageDmgTurn;
+    mage.damage = mageDmgTurn;
+    mage.mana -= mageManaTurn;
   },
 
   dragonTurn: (dragonAttack) => {
-    const dragonDmg = dragonAttack(dragon);
-    dragon.damage = dragonDmg;
-    mage.healthPoints -= dragonDmg;
-    warrior.healthPoints -= dragonDmg;
-    console.log('dragon ataca e damage fica' + dragonDmg);
+    const dragonDmgTurn = dragonAttack(dragon);
+    dragon.damage = dragonDmgTurn;
+    mage.healthPoints -= dragonDmgTurn;
+    warrior.healthPoints -= dragonDmgTurn;
   },
 
   turnEnds: () => battleMembers,
