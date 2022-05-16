@@ -97,3 +97,8 @@ function booksOrderedByReleaseYearDesc() {
   return books.sort((bookA, bookB) => bookB.releaseYear - bookA.releaseYear);
 }
 
+//exercise5
+
+function everyoneWasBornOnSecXX() {
+  return books.every((book) => book.author.birthYear > 1900);
+}
