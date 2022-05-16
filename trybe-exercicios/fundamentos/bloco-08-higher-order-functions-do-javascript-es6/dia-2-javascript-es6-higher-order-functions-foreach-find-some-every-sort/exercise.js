@@ -91,4 +91,9 @@ function getNamedBook() {
   return books.find((book) => book.name.length === 26);
 }
 
+//exercise4
+
+function booksOrderedByReleaseYearDesc() {
+  return books.sort((bookA, bookB) => bookB.releaseYear - bookA.releaseYear);
+}
 
