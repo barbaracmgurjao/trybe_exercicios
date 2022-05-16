@@ -102,3 +102,10 @@ function booksOrderedByReleaseYearDesc() {
 function everyoneWasBornOnSecXX() {
   return books.every((book) => book.author.birthYear > 1900);
 }
+
+
+//exercise6
+
+function someBookWasReleaseOnThe80s() {
+  return books.some((book) => book.releaseYear >= 1980 && book.releaseYear <= 1989);
+}
