@@ -73,5 +73,4 @@ const expectedResult = [
 ];
 
 function formatedBookNames() {
-  return expectedResult.map((book) => book.toUpperCase());
-}
+  return books.map((book) => `${book.name} - ${book.genre} - ${book.author.name}`)};
