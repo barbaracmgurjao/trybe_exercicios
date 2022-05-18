@@ -74,3 +74,47 @@ const expectedResult = [
 
 function formatedBookNames() {
   return books.map((book) => `${book.name} - ${book.genre} - ${book.author.name}`)};
+
+
+  //exercise 2:
+
+  const expectedResult2 = [
+    {
+      age: 31,
+      author: 'Isaac Asimov',
+    },
+    {
+      age: 38,
+      author: 'H. P. Lovecraft',
+    },
+    {
+      age: 39,
+      author: 'Stephen King',
+    },
+    {
+      age: 43,
+      author: 'George R. R. Martin',
+    },
+    {
+      age: 45,
+      author: 'Frank Herbert',
+    },
+    {
+      age: 62,
+      author: 'J. R. R. Tolkien',
+    },
+  ];
+
+  function nameAndAge() {
+    return books.map((book) => ({
+
+      age: book.releaseYear - book.author.birthYear,
+      author: book.author.name,
+
+    }))
+    .sort((author1, author2) => author1.age - author2.age);
+  }
+
+  console.log(nameAndAge());
+
+  
