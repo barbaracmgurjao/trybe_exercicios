@@ -115,8 +115,6 @@ function formatedBookNames() {
     .sort((author1, author2) => author1.age - author2.age);
   }
 
-  console.log(nameAndAge());
-
   //exercise3:
 
   const expectedResult3 = [
@@ -154,5 +152,34 @@ function formatedBookNames() {
     return books.filter((book) => book.genre === 'Ficção Científica' || book.genre === 'Fantasia');
   }
 
-  console.log(fantasyOrScienceFiction());
+  //exercise4:
+
+  const expectedResult4 = [
+    {
+      id: 6,
+      name: 'O Chamado de Cthulhu',
+      genre: 'Terror',
+      author: { name: 'H. P. Lovecraft', birthYear: 1890 },
+      releaseYear: 1928,
+    },
+    {
+      id: 3,
+      name: 'Fundação',
+      genre: 'Ficção Científica',
+      author: { name: 'Isaac Asimov', birthYear: 1920 },
+      releaseYear: 1951,
+    },
+    {
+      id: 2,
+      name: 'O Senhor dos Anéis',
+      genre: 'Fantasia',
+      author: { name: 'J. R. R. Tolkien', birthYear: 1892 },
+      releaseYear: 1954,
+    },
+  ];
+  
+  function oldBooksOrdered() {
+    return ((books.filter((book) => 2022 - book.releaseYear > 60)).sort((book1, book2) => book1.releaseYear - book2.releaseYear));
+  }
+
   
