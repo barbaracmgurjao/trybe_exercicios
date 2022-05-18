@@ -182,4 +182,17 @@ function formatedBookNames() {
     return ((books.filter((book) => 2022 - book.releaseYear > 60)).sort((book1, book2) => book1.releaseYear - book2.releaseYear));
   }
 
+  //exercise5:
+
+  const expectedResult5 = [
+    'Frank Herbert',
+    'George R. R. Martin',
+    'Isaac Asimov',
+    'J. R. R. Tolkien',
+  ];
   
+  function fantasyOrScienceFictionAuthors() {
+    return (books.filter((book) => 
+      book.genre === 'Ficção Científica' || book.genre === 'Fantasia')
+        .map((book) => book.author.name)).sort();
+  }
